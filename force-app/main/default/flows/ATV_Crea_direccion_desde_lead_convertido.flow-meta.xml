@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Tiene_datos_de_direccion</name>
+        <label>¿Tiene datos de dirección?</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Si</name>
+            <conditionLogic>1 OR 2 OR 3 OR 4 OR 5</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Street</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.City</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.State</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PostalCode</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Country</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Crear_direccion_desde_lead</targetReference>
+            </connector>
+            <label>Sí</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>FX_LeadStateNorm</name>
+        <dataType>String</dataType>
+        <expression>TRIM(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+SUBSTITUTE(
+UPPER({!$Record.State}),
+&quot;Á&quot;,&quot;A&quot;),
+&quot;É&quot;,&quot;E&quot;),
+&quot;Í&quot;,&quot;I&quot;),
+&quot;Ó&quot;,&quot;O&quot;),
+&quot;Ú&quot;,&quot;U&quot;),
+&quot;Ü&quot;,&quot;U&quot;),
+&quot;Ñ&quot;,&quot;N&quot;),
+&quot;.&quot;,&quot; &quot;),
+&quot;-&quot;,&quot; &quot;),
+&quot;_&quot;,&quot; &quot;),
+&quot;  &quot;,&quot; &quot;)
+)</expression>
+    </formulas>
+    <formulas>
+        <name>FX_ProvinciaMapped</name>
+        <dataType>String</dataType>
+        <expression>CASE(
+{!FX_LeadStateNorm},
+&quot;BUENOS AIRES&quot;, &quot;Buenos Aires&quot;,
+&quot;BS AS&quot;, &quot;Buenos Aires&quot;,
+&quot;BSAS&quot;, &quot;Buenos Aires&quot;,
+&quot;PBA&quot;, &quot;Buenos Aires&quot;,
+&quot;PROVINCIA DE BUENOS AIRES&quot;, &quot;Buenos Aires&quot;,
+&quot;PCIA DE BUENOS AIRES&quot;, &quot;Buenos Aires&quot;,
+&quot;PCIA BUENOS AIRES&quot;, &quot;Buenos Aires&quot;,
+&quot;CAPITAL FEDERAL&quot;, &quot;Capital Federal&quot;,
+&quot;CABA&quot;, &quot;Capital Federal&quot;,
+&quot;CIUDAD AUTONOMA DE BUENOS AIRES&quot;, &quot;Capital Federal&quot;,
+&quot;CATAMARCA&quot;, &quot;Catamarca&quot;,
+&quot;CHACO&quot;, &quot;Chaco&quot;,
+&quot;CHUBUT&quot;, &quot;Chubut&quot;,
+&quot;CORDOBA&quot;, &quot;Cordoba&quot;,
+&quot;CORRIENTES&quot;, &quot;Corrientes&quot;,
+&quot;ENTRE RIOS&quot;, &quot;Entre Rios&quot;,
+&quot;FORMOSA&quot;, &quot;Formosa&quot;,
+&quot;JUJUY&quot;, &quot;Jujuy&quot;,
+&quot;LA PAMPA&quot;, &quot;La Pampa&quot;,
+&quot;LA RIOJA&quot;, &quot;La Rioja&quot;,
+&quot;MENDOZA&quot;, &quot;Mendoza&quot;,
+&quot;MISIONES&quot;, &quot;Misiones&quot;,
+&quot;NEUQUEN&quot;, &quot;Neuquen&quot;,
+&quot;RIO NEGRO&quot;, &quot;Rio Negro&quot;,
+&quot;SALTA&quot;, &quot;Salta&quot;,
+&quot;SAN JUAN&quot;, &quot;San Juan&quot;,
+&quot;SAN LUIS&quot;, &quot;San Luis&quot;,
+&quot;SANTA CRUZ&quot;, &quot;Santa Cruz&quot;,
+&quot;SANTA FE&quot;, &quot;Santa Fe&quot;,
+&quot;SANTIAGO DEL ESTERO&quot;, &quot;Santiago del Estero&quot;,
+&quot;TIERRA DEL FUEGO&quot;, &quot;Tierra del Fuego&quot;,
+&quot;TUCUMAN&quot;, &quot;Tucuman&quot;,
+&quot;Buenos Aires&quot;
+)</expression>
+    </formulas>
+    <interviewLabel>Crea dirección desde Lead convertido {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Crea dirección desde Lead convertido</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Crear_direccion_desde_lead</name>
+        <label>Crear dirección desde Lead</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>ATV_NTS_Provincia__c</field>
+            <value>
+                <elementReference>FX_ProvinciaMapped</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ATV_fld_ShippingPostalCode__c</field>
+            <value>
+                <elementReference>$Record.PostalCode</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Account__c</field>
+            <value>
+                <elementReference>$Record.ConvertedAccountId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Direccion_predeterminada__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Direccion_predeterminada_facturacion__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Estado_o_Provincia__c</field>
+            <value>
+                <elementReference>$Record.State</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>NTS_fld_ShippingCity__c</field>
+            <value>
+                <elementReference>$Record.City</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>NTS_fld_ShippingCountry__c</field>
+            <value>
+                <elementReference>$Record.Country</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>NTS_fld_ShippingStreet__c</field>
+            <value>
+                <elementReference>$Record.Street</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>$Record.Name</elementReference>
+            </value>
+        </inputAssignments>
+        <object>ATV_NTS_Direccion_de_Envio__c</object>
+    </recordCreates>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Tiene_datos_de_direccion</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>IsConverted</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>IsConverted</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ConvertedAccountId</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>InvalidDraft</status>
+</Flow>

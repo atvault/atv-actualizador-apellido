@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CASTLE_SA_MKT_GENERAL_AP</fullName>
+    <columns>LEAD.COMPANY</columns>
+    <columns>LEAD.URL</columns>
+    <columns>LEAD.EMAIL</columns>
+    <columns>RANGO_DE_FACTURACI_N__c</columns>
+    <columns>LEAD.STATE</columns>
+    <columns>LEAD.STATUS</columns>
+    <columns>LEAD.UNREAD</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>LEAD.EMPLOYEES</columns>
+    <columns>Causa_No_Calificado__c</columns>
+    <columns>LEAD.ZIP</columns>
+    <columns>Horario_de_atenci_n__c</columns>
+    <columns>LEAD.PHONE</columns>
+    <columns>TelefonoAlternativo__c</columns>
+    <columns>LEAD.CITY</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>LEAD.STATE</field>
+        <operation>contains</operation>
+        <value>ENTRE RIOS</value>
+    </filters>
+    <filters>
+        <field>RANGO_DE_FACTURACI_N__c</field>
+        <operation>equals</operation>
+        <value>6,5,4</value>
+    </filters>
+    <filters>
+        <field>LEAD.STATUS</field>
+        <operation>equals</operation>
+        <value>Prospecto Lead,Prospecto MQL,Atención (Calificado - SQL)</value>
+    </filters>
+    <filters>
+        <field>LEAD.EMPLOYEES</field>
+        <operation>greaterOrEqual</operation>
+        <value>40</value>
+    </filters>
+    <label>CASTLE SA_MKT_GENERAL AP</label>
+</ListView>

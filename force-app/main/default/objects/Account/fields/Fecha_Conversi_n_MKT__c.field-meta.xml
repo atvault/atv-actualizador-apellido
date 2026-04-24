@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fecha_Conversi_n_MKT__c</fullName>
+    <formula>IF(
+    AND(NOT(ISBLANK(X1er_Opp_Atenci_n__c)), NOT(ISBLANK(ATV_Fecha_de_No_Cualificado__c))),
+    /* Si ambos tienen valor, mostrar el menor */
+    IF(DATEVALUE(X1er_Opp_Atenci_n__c) &lt; ATV_Fecha_de_No_Cualificado__c, 
+       DATEVALUE(X1er_Opp_Atenci_n__c), 
+       ATV_Fecha_de_No_Cualificado__c),
+
+    /* Si solo X1er_Opp_Atenci_n__c tiene valor */
+    IF(NOT(ISBLANK(X1er_Opp_Atenci_n__c)), DATEVALUE(X1er_Opp_Atenci_n__c),
+
+    /* Si solo ATV_Fecha_de_No_Cualificado__c tiene valor */
+    ATV_Fecha_de_No_Cualificado__c)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Fecha Conversión MKT</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Date</type>
+</CustomField>

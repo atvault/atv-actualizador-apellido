@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CASTLE_SA_MARKETING_DISTRIBUIDORES</fullName>
+    <columns>CUIT__c</columns>
+    <columns>FULL_NAME</columns>
+    <columns>LEAD.URL</columns>
+    <columns>Horario_de_atenci_n__c</columns>
+    <columns>LEAD.PHONE</columns>
+    <columns>TelefonoAlternativo__c</columns>
+    <columns>LEAD.EMAIL</columns>
+    <columns>Rubro__c</columns>
+    <columns>RANGO_DE_FACTURACI_N__c</columns>
+    <columns>LEAD.EMPLOYEES</columns>
+    <columns>LEAD.CITY</columns>
+    <columns>LEAD.ZIP</columns>
+    <columns>LEAD.STATE</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Rubro__c</field>
+        <operation>equals</operation>
+        <value>77</value>
+    </filters>
+    <filters>
+        <field>RANGO_DE_FACTURACI_N__c</field>
+        <operation>equals</operation>
+        <value>6,5,4</value>
+    </filters>
+    <filters>
+        <field>LEAD.EMPLOYEES</field>
+        <operation>greaterOrEqual</operation>
+        <value>10</value>
+    </filters>
+    <filters>
+        <field>LEAD.STATUS</field>
+        <operation>equals</operation>
+        <value>Prospecto Lead,Prospecto MQL</value>
+    </filters>
+    <filters>
+        <field>CORE.USERS.ALIAS</field>
+        <operation>equals</operation>
+        <value>covi</value>
+    </filters>
+    <label>CASTLE SA_MARKETING_DISTRIBUIDORES</label>
+</ListView>

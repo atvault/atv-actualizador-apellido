@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CUIT_incorrecto</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT (TEXT( Status ) = &quot;Prospecto Lead&quot;),
+NOT(REGEX(TEXT( CUIT__c ), &apos;\\d{11}&apos;)))</errorConditionFormula>
+    <errorDisplayField>CUIT__c</errorDisplayField>
+    <errorMessage>El CUIT debe tener 11 digitos</errorMessage>
+</ValidationRule>

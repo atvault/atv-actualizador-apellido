@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AllAccounts</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>Estado__c</columns>
+    <columns>ACCOUNT.URL</columns>
+    <columns>Horario_de_atenci_n__c</columns>
+    <columns>ACCOUNT.PHONE1</columns>
+    <columns>TEL_FONO_ALTERNATIVO__c</columns>
+    <columns>Email__c</columns>
+    <columns>Rubro__c</columns>
+    <columns>ATV_Rango_de_Facturaci_n__c</columns>
+    <columns>ACCOUNT.EMPLOYEES</columns>
+    <columns>ACCOUNT.ADDRESS1_STREET</columns>
+    <columns>ACCOUNT.ADDRESS1_ZIP</columns>
+    <columns>ACCOUNT.ADDRESS1_CITY</columns>
+    <columns>ACCOUNT.ADDRESS1_STATE</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <filterScope>Everything</filterScope>
+    <label>Todas las Cuentas</label>
+</ListView>

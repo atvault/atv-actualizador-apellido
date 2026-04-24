@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ubicacion_Formula__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(LOWER(BillingState),
+&quot;buenos aires&quot;, 3,
+&quot;catamarca&quot;, 1,
+&quot;chaco&quot;, 1,
+&quot;chubut&quot;, 1,
+&quot;córdoba&quot;, 3,
+&quot;cordoba&quot;, 3,
+&quot;corrientes&quot;, 1,
+&quot;entre ríos&quot;, 3,
+&quot;entre rios&quot;, 3,
+&quot;formosa&quot;, 0,
+&quot;jujuy&quot;, 0,
+&quot;la pampa&quot;, 1,
+&quot;la rioja&quot;, 1,
+&quot;mendoza&quot;, 2,
+&quot;misiones&quot;, 0,
+&quot;neuquén&quot;, 1,
+&quot;neuquen&quot;, 1,
+&quot;río negro&quot;, 1,
+&quot;rio negro&quot;, 1,
+&quot;salta&quot;, 1,
+&quot;san juan&quot;, 1,
+&quot;san luis&quot;, 2,
+&quot;santa cruz&quot;, 1,
+&quot;santa fe&quot;, 4,
+&quot;santiago del estero&quot;, 1,
+&quot;tierra del fuego, antártida e islas del atlántico sur&quot;, 1,
+/*&quot;tierra del fuego, antartida e islas del atlantico sur&quot;, 1,*/
+&quot;tucumán&quot;, 1,
+&quot;tucuman&quot;, 1,
+&quot;ciudad autónoma de buenos aires (caba)&quot;, 3,
+&quot;ciudad autonoma de buenos aires (caba)&quot;, 3,
+0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Ubicacion Formula</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

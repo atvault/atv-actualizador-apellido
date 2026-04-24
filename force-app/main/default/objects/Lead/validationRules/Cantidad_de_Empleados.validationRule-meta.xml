@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cantidad_de_Empleados</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+OR(TEXT( Status ) = &quot;Prospecto MQL&quot;,TEXT( Status ) = &quot;Atención (Calificado - SQL)&quot;),
+ISBLANK(   NumberOfEmployees   )
+)</errorConditionFormula>
+    <errorDisplayField>NumberOfEmployees</errorDisplayField>
+    <errorMessage>Falta el número de empleados</errorMessage>
+</ValidationRule>

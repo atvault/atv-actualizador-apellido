@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Nivel_Facturacion_Formula__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(
+    TEXT(ATV_Rango_de_Facturaci_n__c),
+    &quot;1&quot;, 0,
+    &quot;2&quot;, 0,
+    &quot;3&quot;, 0,
+    &quot;4&quot;, 1,
+    &quot;5&quot;, 2,
+    &quot;6&quot;, 3,
+    0
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Nivel Facturacion Formula</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

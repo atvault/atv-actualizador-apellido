@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Score_Nosis_Formula__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(Score_Nosis__c &lt;= 500, 0,
+IF(Score_Nosis__c &lt;= 600, 1,
+IF(Score_Nosis__c &lt;= 700, 2,
+IF(Score_Nosis__c &lt;= 800, 3,
+4))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Score Nosis Formula</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

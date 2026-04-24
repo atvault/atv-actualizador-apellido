@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Debe_cambiar_el_Apellido</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+OR(TEXT( Status ) = &quot;Prospecto MQL&quot;,TEXT( Status ) = &quot;Atención (Calificado - SQL)&quot;),
+LastName=&quot;N/A&quot;
+)</errorConditionFormula>
+    <errorDisplayField>LastName</errorDisplayField>
+    <errorMessage>El apellido no debe ser N/A</errorMessage>
+</ValidationRule>

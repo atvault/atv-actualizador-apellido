@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <formulas>
+        <name>primercompra</name>
+        <dataType>Date</dataType>
+        <expression>CASE(
+    TEXT({!$Record.FrecuenciaCompra__c}),
+    /* Mensual: primer día del mes actual */
+    &quot;Mensual&quot;, DATE( YEAR(TODAY()), MONTH(TODAY()), 1 ),
+    /* Bimensual: primer día del mes anterior */
+    &quot;Bimensual&quot;,
+        IF(
+            MONTH(TODAY()) - 1 &gt; 0,
+            DATE( YEAR(TODAY()), MONTH(TODAY()) - 1, 1 ),
+            /* Si es enero, retrocede un año y asigna diciembre */
+            DATE( YEAR(TODAY()) - 1, MONTH(TODAY()) - 1 + 12, 1 )
+        ),
+    /* Trimestral: primer día de hace 2 meses */
+    &quot;Trimestral&quot;,
+        IF(
+            MONTH(TODAY()) - 2 &gt; 0,
+            DATE( YEAR(TODAY()), MONTH(TODAY()) - 2, 1 ),
+            DATE( YEAR(TODAY()) - 1, MONTH(TODAY()) - 2 + 12, 1 )
+        ),
+    /* Semestral: primer día de hace 5 meses */
+    &quot;Semestral&quot;,
+        IF(
+            MONTH(TODAY()) - 5 &gt; 0,
+            DATE( YEAR(TODAY()), MONTH(TODAY()) - 5, 1 ),
+            DATE( YEAR(TODAY()) - 1, MONTH(TODAY()) - 5 + 12, 1 )
+        ),
+    /* Anual: primer día del mismo mes del año anterior */
+    &quot;Anual&quot;, DATE( YEAR(TODAY()) - 1, MONTH(TODAY()), 1 ),
+    /* Valor por defecto: Mensual */
+    DATE( YEAR(TODAY()), MONTH(TODAY()), 1 )
+)</expression>
+    </formulas>
+    <interviewLabel>Actualiza Account Product {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Actualiza Account Product</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Actualiza_ltima_compra</name>
+        <label>Actualiza última compra</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <inputAssignments>
+            <field>Ultima_Compra__c</field>
+            <value>
+                <elementReference>primercompra</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Actualiza_ltima_compra</targetReference>
+        </connector>
+        <object>AccountProduct__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

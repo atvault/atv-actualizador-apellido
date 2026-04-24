@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cat__c</fullName>
+    <label>Categoría</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>81</fullName>
+                <default>false</default>
+                <label>BRONZE</label>
+            </value>
+            <value>
+                <fullName>79</fullName>
+                <default>false</default>
+                <label>SILVER</label>
+            </value>
+            <value>
+                <fullName>78</fullName>
+                <default>false</default>
+                <label>GOLD</label>
+            </value>
+            <value>
+                <fullName>80</fullName>
+                <default>false</default>
+                <label>PLATINUM</label>
+            </value>
+            <value>
+                <fullName>82</fullName>
+                <default>false</default>
+                <label>EN SONDEO</label>
+            </value>
+            <value>
+                <fullName>83</fullName>
+                <default>false</default>
+                <label>NO CUALIFICADO</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

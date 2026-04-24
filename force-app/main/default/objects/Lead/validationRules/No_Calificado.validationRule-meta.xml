@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_Calificado</fullName>
+    <active>true</active>
+    <errorConditionFormula>and(TEXT( Status ) = &quot;No Cualificado&quot; ,
+ISBLANK(  MQL_Comentario__c  ))</errorConditionFormula>
+    <errorDisplayField>MQL_Comentario__c</errorDisplayField>
+    <errorMessage>Debe detallar la otra causa de No Cualificado</errorMessage>
+</ValidationRule>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Aprobaci_n_del_presupuesto</name>
+        <label>Aprobación del presupuesto</label>
+        <locationX>176</locationX>
+        <locationY>539</locationY>
+        <actionName>ATV_QuoteApprovalSubmitter</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Cambio_de_etapa_a_revisi_n</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>quoteIds</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>ATV_QuoteApprovalSubmitter</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>haceRecallSiExiste</name>
+        <label>haceRecallSiExiste</label>
+        <locationX>176</locationX>
+        <locationY>323</locationY>
+        <actionName>FlowApprovalHelper</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Assignment_1</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>recordIds</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>FlowApprovalHelper</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <apiVersion>60.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assignment_1</name>
+        <label>Assignment 1</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <assignmentItems>
+            <assignToReference>aprobadores</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>005Hp00000fcNIhIAM</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Aprobaci_n_del_presupuesto</targetReference>
+        </connector>
+    </assignments>
+    <environments>Default</environments>
+    <interviewLabel>Envío a aprobar del presupuesto {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Envío a aprobar del presupuesto</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Cambio_de_etapa_a_revisi_n</name>
+        <label>Cambio de etapa a revisión</label>
+        <locationX>176</locationX>
+        <locationY>647</locationY>
+        <inputAssignments>
+            <field>ATV_Reset_Approval_Requested__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status</field>
+            <value>
+                <stringValue>In Review</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>haceRecallSiExiste</targetReference>
+        </connector>
+        <filterFormula>AND(
+ISPICKVAL({!$Record.Status}, &quot;Needs Review&quot;),
+OR(
+ISPICKVAL({!$Record__Prior.Status}, &quot;Draft&quot;),
+ISPICKVAL({!$Record__Prior.Status}, &quot;Approved&quot;),
+ISPICKVAL({!$Record__Prior.Status}, &quot;Rejected&quot;),
+ISPICKVAL({!$Record__Prior.Status}, &quot;Accepted&quot;),
+ISPICKVAL({!$Record__Prior.Status}, &quot;Presented&quot;)
+),
+NOT({!$Record.ATV_Override_flows__c}),
+NOT(ISCHANGED({!$Record.ID_Netsuite__c})),
+CASESAFEID({!$User.Id}) &lt;&gt; &quot;005WC00000J4gi7YAB&quot;
+)</filterFormula>
+        <object>Quote</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>aprobador</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>aprobadores</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>quetrae</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CUIT_Incorrecto</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+    NOT(ISBLANK(CUIT__c )),
+BillingCountry  = &quot;ARGENTINA&quot;,
+NOT(REGEX(TEXT( CUIT__c ), &apos;\\d{11}&apos;))
+)</errorConditionFormula>
+    <errorMessage>El CUIT debe tener 11 digitos</errorMessage>
+</ValidationRule>

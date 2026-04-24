@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_Cualificado</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+TEXT( Status ) = &quot;No Cualificado&quot;,
+ISBLANK(TEXT( Causa_No_Calificado__c ))
+)</errorConditionFormula>
+    <errorMessage>Falta la causa de no cualificado</errorMessage>
+</ValidationRule>

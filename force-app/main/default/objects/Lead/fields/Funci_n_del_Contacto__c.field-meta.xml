@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Funci_n_del_Contacto__c</fullName>
+    <label>Función del Contacto</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Consultor</fullName>
+                <default>false</default>
+                <label>CONSULTOR</label>
+            </value>
+            <value>
+                <fullName>Contacto alternativo</fullName>
+                <default>false</default>
+                <label>CONTACTO ALTERNATIVO</label>
+            </value>
+            <value>
+                <fullName>Contacto principal</fullName>
+                <default>false</default>
+                <label>CONTACTO PRINCIPAL</label>
+            </value>
+            <value>
+                <fullName>Creador de la orden</fullName>
+                <default>false</default>
+                <label>CREADOR DE LA ORDEN</label>
+            </value>
+            <value>
+                <fullName>Dueño</fullName>
+                <default>false</default>
+                <label>DUEÑO</label>
+            </value>
+            <value>
+                <fullName>Otro</fullName>
+                <default>false</default>
+                <label>OTRO</label>
+            </value>
+            <value>
+                <fullName>RESPONSABLE DE LA TOMA DE DECISIONES</fullName>
+                <default>false</default>
+                <label>RESPONSABLE DE LA TOMA DE DECISIONES</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

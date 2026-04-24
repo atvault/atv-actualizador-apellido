@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tipo_de_Contribuyente</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+OR(TEXT( Status ) = &quot;Prospecto MQL&quot;,TEXT( Status ) = &quot;Atención (Calificado - SQL)&quot;),
+ISBLANK( text(  Tipo_de_Contribuyente__c   )
+))</errorConditionFormula>
+    <errorDisplayField>Tipo_de_Contribuyente__c</errorDisplayField>
+    <errorMessage>Falta el tipo de contribuyente</errorMessage>
+</ValidationRule>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prospectos_por_Vendedor</fullName>
+    <columns>LEAD.COMPANY</columns>
+    <columns>LEAD.STATUS</columns>
+    <columns>LEAD.EMAIL</columns>
+    <columns>CORE.USERS.ALIAS</columns>
+    <columns>LEAD.CONVERTED</columns>
+    <columns>Days_to_Convert__c</columns>
+    <columns>Fecha_Conversi_n_MKT__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Fecha_Conversi_n_MKT__c</field>
+        <operation>equals</operation>
+        <value>LAST_MONTH</value>
+    </filters>
+    <label>Prospectos por Vendedor</label>
+</ListView>
